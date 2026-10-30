@@ -20,7 +20,7 @@ const socialLinks = [
   ],
   [
     "لينكدان",
-    "https://www.linkedin.com/",
+    "https://www.linkedin.com/company/mothmr-development/about/",
     "M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z",
     "#0a66c2",
   ],
@@ -168,7 +168,7 @@ function Hero() {
         <div className="hero-copy">
           <div className="eyebrow dark">
             <img src={`${A}/797a8.svg`} alt="" />
-            ريادة التطوير في مدن الجيل الرابع والمدن الذكية
+            ريادة في التطوير العقاري
           </div>
           <h1 className="sr-only">خطوة نحو المستقبل</h1>
           <p>
@@ -179,10 +179,6 @@ function Hero() {
           </p>
           <div className="stats-row">
             <div className="stats">
-              <div>
-                <strong className="gold">G+3</strong>
-                <span>مشاريع فندقية</span>
-              </div>
               <div>
                 <strong className="blue">100%</strong>
                 <span>التزام هندسي</span>
@@ -283,7 +279,8 @@ function Gallery({ images }: { images: string[] }) {
   }
   return (
     <>
-      <img src={images[i]} alt={`صورة ${i + 1} من ${images.length}`} />
+      <img className="gallery-bg" src={images[i]} alt="" aria-hidden="true" />
+      <img className="gallery-main" src={images[i]} alt={`صورة ${i + 1} من ${images.length}`} />
       <button type="button" aria-label="السابق" style={{ ...arrow, right: 12 }} onClick={() => go(-1)}>
         ›
       </button>
@@ -528,7 +525,7 @@ function Contact() {
           </div>
           <div className="form-row">
             <label>
-              الاسم بالكامل *<input required placeholder="مثال: أحمد محمد" />
+              الاسم بالكامل *<input required maxLength={30} placeholder="مثال: أحمد محمد" />
             </label>
             <PhoneField />
           </div>
@@ -557,6 +554,7 @@ function Contact() {
           <label>
             ملاحظات أو استفسار خاص
             <textarea
+              maxLength={500}
               rows={3}
               placeholder="أود الاستفسار عن تفاصيل المساحات وأنظمة السداد المتاحة..."
             />
@@ -688,7 +686,9 @@ function Values() {
         </div>
         <div className="values-grid" dir="ltr">
           {valuesImages.map((n) => (
-            <img key={n} src={`${B}/Values/${n}.png`} alt={`قيمة ${n}`} loading="lazy" />
+            <div key={n} className="value-card">
+              <img src={`${B}/Values/${n}.png`} alt={`قيمة ${n}`} loading="lazy" />
+            </div>
           ))}
         </div>
       </div>
