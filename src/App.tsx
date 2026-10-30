@@ -162,7 +162,7 @@ function Hero() {
   return (
     <section id="home" className="hero" dir="rtl">
       <div className="hero-bg" aria-hidden="true">
-        <img src={`${B}${encodeURI("/قطعة 333 - مسلسل 2/future.png")}`} alt="" />
+        <img src={`${B}${encodeURI("/project-333/future.png")}`} alt="" />
       </div>
       <div className="shell hero-grid">
         <div className="hero-copy">
@@ -261,7 +261,7 @@ function Vision() {
 }
 
 const galleryImages = ["1.png", "2.png"].map((n) =>
-  `${B}${encodeURI(`/قطعة 333 - مسلسل 2/${n}`)}`,
+  `${B}${encodeURI(`/project-333/${n}`)}`,
 )
 
 function Gallery({ images }: { images: string[] }) {
@@ -372,7 +372,7 @@ function Project() {
               <div className="project-actions">
                 <a
                   className="btn btn-primary"
-                  href={`${B}${encodeURI("/قطعة 333 - مسلسل 2/333.pdf")}`}
+                  href={`${B}${encodeURI("/project-333/333.pdf")}`}
                   download="333.pdf"
                   target="_blank"
                   rel="noopener"
@@ -433,7 +433,7 @@ function Project() {
         <div className="project-card">
           <div className="project-image">
             <img
-              src={`${B}${encodeURI("/قطعة 333 - مسلسل 2/inprogress.jpeg")}`}
+              src={`${B}${encodeURI("/project-333/inprogress.jpeg")}`}
               alt="مشروع تحت التنفيذ"
             />
           </div>
