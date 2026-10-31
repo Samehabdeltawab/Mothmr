@@ -517,7 +517,30 @@ function Contact() {
         </div>
         <form
           className="contact-form"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={(event) => {
+            event.preventDefault()
+            const f = event.currentTarget
+            const d = new FormData(f)
+            const sel = (n: string) => {
+              const el = f.elements.namedItem(n) as HTMLSelectElement | null
+              return el && el.selectedIndex >= 0 && el.value
+                ? el.options[el.selectedIndex].text
+                : "-"
+            }
+            const phone = `${d.get("dial") ?? ""}${String(d.get("phone") ?? "").replace(/^0+/, "")}`
+            const msg = [
+              "طلب حجز / استفسار جديد",
+              `الاسم: ${d.get("fullname") ?? ""}`,
+              `الهاتف: ${phone}`,
+              `نوع الاهتمام: ${sel("interest")}`,
+              `الوقت المفضل: ${sel("time")}`,
+              `ملاحظات: ${d.get("notes") || "-"}`,
+            ].join("\n")
+            const url = `https://wa.me/201000281416?text=${encodeURIComponent(msg)}`
+            const w = window.open(url, "_blank", "noopener")
+            if (!w) window.location.href = url
+            f.reset()
+          }}
         >
           <div className="form-head">
             <h3>احجز استشارتك العقارية المجانية</h3>
@@ -525,14 +548,14 @@ function Contact() {
           </div>
           <div className="form-row">
             <label>
-              الاسم بالكامل *<input required maxLength={30} placeholder="مثال: أحمد محمد" />
+              الاسم بالكامل *<input name="fullname" required maxLength={30} placeholder="مثال: أحمد محمد" />
             </label>
             <PhoneField />
           </div>
           <div className="form-row">
             <label>
               نوع الاهتمام
-              <select defaultValue="">
+              <select name="interest" defaultValue="">
                 <option value="" disabled>
                   اختر نوع الاهتمام
                 </option>
@@ -545,7 +568,7 @@ function Contact() {
             </label>
             <label>
               الوقت المفضل للاتصال
-              <select defaultValue="morning">
+              <select name="time" defaultValue="morning">
                 <option value="morning">صباحاً (10 ص - 2 ظ)</option>
                 <option value="evening">مساءً (4 م - 8 م)</option>
               </select>
@@ -554,6 +577,7 @@ function Contact() {
           <label>
             ملاحظات أو استفسار خاص
             <textarea
+              name="notes"
               maxLength={500}
               rows={3}
               placeholder="أود الاستفسار عن تفاصيل المساحات وأنظمة السداد المتاحة..."
@@ -623,7 +647,9 @@ function PhoneField() {
             </option>
           ))}
         </select>
+        <input type="hidden" name="dial" value={dial} />
         <input
+          name="phone"
           required
           type="tel"
           inputMode="numeric"
