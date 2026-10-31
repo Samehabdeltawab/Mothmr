@@ -1,47 +1,20 @@
 ﻿@import 'tailwindcss';
 
-@font-face {
-  font-family: 'Cairo:Black';
-  src: url('https://static.figma.com/font/Cairo_slnt_wght__1') format('woff2');
-  font-style: normal;
-  font-weight: 900;
-}
-@font-face {
-  font-family: 'Cairo:Bold';
-  src: url('https://static.figma.com/font/Cairo_slnt_wght__1') format('woff2');
-  font-style: normal;
-  font-weight: 700;
-}
-@font-face {
-  font-family: 'Cairo:Regular';
-  src: url('https://static.figma.com/font/Cairo_slnt_wght__1') format('woff2');
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: 'Cairo:SemiBold';
-  src: url('https://static.figma.com/font/Cairo_slnt_wght__1') format('woff2');
-  font-style: normal;
-  font-weight: 600;
-}
-@font-face {
-  font-family: 'Cairo:ExtraBold';
-  src: url('https://static.figma.com/font/Cairo_slnt_wght__1') format('woff2');
-  font-style: normal;
-  font-weight: 800;
-}
-@font-face {
-  font-family: 'Tajawal:Bold';
-  src: url('https://static.figma.com/font/Tajawal-Bold_1') format('woff2');
-  font-style: normal;
-  font-weight: 700;
-}
-@font-face {
-  font-family: 'Tajawal:ExtraBold';
-  src: url('https://static.figma.com/font/Tajawal-ExtraBold_1') format('woff2');
-  font-style: normal;
-  font-weight: 800;
-}
+/* Self-hosted upright fonts (no slant axis -> no italic look on iOS) */
+@font-face { font-family: 'Cairo:Black'; src: url('/fonts/cairo-arabic.woff2') format('woff2'); font-style: normal; font-weight: 900; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Cairo:Black'; src: url('/fonts/cairo-latin.woff2') format('woff2'); font-style: normal; font-weight: 900; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Cairo:ExtraBold'; src: url('/fonts/cairo-arabic.woff2') format('woff2'); font-style: normal; font-weight: 800; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Cairo:ExtraBold'; src: url('/fonts/cairo-latin.woff2') format('woff2'); font-style: normal; font-weight: 800; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Cairo:Bold'; src: url('/fonts/cairo-arabic.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Cairo:Bold'; src: url('/fonts/cairo-latin.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Cairo:SemiBold'; src: url('/fonts/cairo-arabic.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Cairo:SemiBold'; src: url('/fonts/cairo-latin.woff2') format('woff2'); font-style: normal; font-weight: 600; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Cairo:Regular'; src: url('/fonts/cairo-arabic.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Cairo:Regular'; src: url('/fonts/cairo-latin.woff2') format('woff2'); font-style: normal; font-weight: 400; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Tajawal:Bold'; src: url('/fonts/tajawal-700-arabic.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Tajawal:Bold'; src: url('/fonts/tajawal-700-latin.woff2') format('woff2'); font-style: normal; font-weight: 700; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: 'Tajawal:ExtraBold'; src: url('/fonts/tajawal-800-arabic.woff2') format('woff2'); font-style: normal; font-weight: 800; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+0870-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFC; }
+@font-face { font-family: 'Tajawal:ExtraBold'; src: url('/fonts/tajawal-800-latin.woff2') format('woff2'); font-style: normal; font-weight: 800; font-display: swap; unicode-range: U+0000-05FF, U+2000-206F, U+20AC, U+2122; }
 
 @layer base {
   html { scroll-behavior: smooth; }
@@ -104,6 +77,9 @@
   .hero-bg img { left: auto; right: -6%; width: 106%; max-width: none; }
 }
 .hero-bg::after { content: ''; background: linear-gradient(90deg,rgba(12,35,64,.9) 0%,rgba(12,35,64,.55) 35%,rgba(12,35,64,0) 65%); }
+@media (min-width: 1121px) and (max-width: 1700px) {
+  .hero-bg img { right: -14%; width: 120%; }
+}
 .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,660px); gap: 16px 40px; align-items: center; align-content: center; min-height: 0; }
 .hero-copy { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; align-items: flex-start; }
 .eyebrow { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 7px 16px; font: 600 14px/20px 'Cairo:SemiBold'; }
@@ -323,17 +299,16 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
 .projects-col .project-image { min-height: 0; height: 520px; }
 
 .values-section { background: #fff; }
-.values-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 16px; align-items: stretch; }
+.values-grid { --cols: 5; --gap: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap); }
+.values-grid > .value-card { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); min-width: 0; }
 .values-grid img { width: 100%; height: auto; display: block; border-radius: 16px; }
 .value-card { position: relative; border-radius: 16px; overflow: hidden; }
 .value-card::after { content: ''; position: absolute; left: 28%; right: 28%; top: 5%; height: 17%; background: #96aed9; border-radius: 10px; box-shadow: 0 0 10px 8px #96aed9; pointer-events: none; }
 
 @media (max-width: 1120px) {
-  .values-grid { gap: 10px; }
+  .values-grid { --gap: 10px; }
 }
 @media (min-width: 1121px) {
-  .hero-copy, .hero-card { position: relative; left: -40px; }
-  .hero-copy { left: calc(-1 * (max(24px, (100vw - 1216px) / 2) + 20px)); }
   .hero-copy > p { max-width: 620px; }
 }
 @media (max-width: 820px) {
@@ -343,10 +318,10 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
   .hero-copy, .hero-card { grid-column: auto; grid-row: auto; }
   .projects-split { grid-template-columns: 1fr; }
   .projects-col .project-image { height: 420px; }
-  .values-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .values-grid { --cols: 3; }
 }
 @media (max-width: 560px) {
-  .values-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .values-grid { --cols: 2; }
 }
 
 /* ---- Compact hero / sections overrides ---- */
@@ -414,7 +389,7 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
   .hero-copy { margin-inline-start: 0; padding-inline-start: 0; }
   .hero-copy > p { max-width: 510px; }
   .hero-card { max-width: 560px; }
-  .hero-copy, .hero-card { transform: translateX(-80px); }
+  .hero-copy, .hero-card { transform: translateX(calc(-1 * min(80px, max(0px, (100vw - 1280px) / 2)))); }
 }
 
 /* Hero stats boxes and CTA button: same size */
