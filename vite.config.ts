@@ -14,9 +14,7 @@ export default defineConfig(({ mode, command }) => {
   return {
     base: process.env.FIGMA_PUBLIC_URL
       ? `${process.env.FIGMA_PUBLIC_URL}/`
-      : command === "build"
-        ? "/Mothmr/" // GitHub Pages: https://samehabdeltawab.github.io/Mothmr/
-        : "/",
+      : "/", // Custom domain (CNAME): https://mothmr-eg.com/
     build: {
       sourcemap: emitSourcemaps ? "inline" : false,
       minify: !emitSourcemaps,
