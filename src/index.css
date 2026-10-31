@@ -330,6 +330,13 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
 .stats-row .stats div { padding: 6px 14px; border-radius: 10px; }
 .stats-row .stats strong { font-size: 18px; line-height: 24px; }
 .stats-row .btn { white-space: nowrap; }
+@media (max-width: 560px) {
+  .stats-row { flex-wrap: nowrap; gap: 8px; }
+  .stats-row .stats { flex: 0 0 auto; gap: 0; }
+  .stats-row .stats div { padding: 6px 10px; }
+  .stats-row .hero-actions { width: auto; flex: 1 1 0; min-width: 0; }
+  .stats-row .btn { width: 100%; min-width: 0; padding-inline: 10px; font-size: 14px; justify-content: center; }
+}
 .section { padding-block: 48px; }
 .section-head { margin-bottom: 32px; }
 .project-head { margin-bottom: 28px; }
@@ -400,3 +407,11 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
 .stats-row .stats span { line-height: 16px; }
 .stats-row .hero-actions { align-items: stretch; }
 .stats-row .hero-actions .btn { box-sizing: border-box; width: 210px; height: 48px; padding: 2px 14px; justify-content: center; white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .stats-row .stats div { width: 100px; padding: 2px 6px; }
+  .stats-row { width: 100%; }
+  .stats-row .hero-actions .btn { font-size: 13px; gap: 4px; }
+  .stats-row .hero-actions { width: auto; flex: 1 1 0; min-width: 0; }
+  .stats-row .hero-actions .btn { width: 100%; min-width: 0; padding-inline: 8px; }
+}
