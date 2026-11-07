@@ -176,7 +176,7 @@
 .contact-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; }
 .contact-info { grid-column: 1; }
 .contact-kicker { color: var(--gold); font: 700 14px/20px 'Cairo:Bold'; letter-spacing: 1.4px; }
-.contact-info h2 { margin: 10px 0 14px; font: 800 36px/40px 'Tajawal:ExtraBold'; }
+.contact-info h2 { margin: 10px 0 14px; font: 800 28px/34px 'Tajawal:ExtraBold'; white-space: nowrap; }
 .contact-info > p { color: #cbd5e1; font-size: 16px; line-height: 24px; }
 .contact-cards { display: grid; gap: 14px; margin-top: 28px; }
 .contact-cards a { direction: rtl; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 20px; border: 1px solid #334155; border-radius: 16px; background: rgba(30,41,59,.9); }

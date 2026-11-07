@@ -509,9 +509,7 @@ function Contact() {
         <div className="contact-info">
           <span className="contact-kicker">{c.kicker}</span>
           <h2>
-            {c.titleLines[0]}
-            <br />
-            {c.titleLines[1]}
+            {c.titleLines[0]} {c.titleLines[1]}
           </h2>
           <p>{c.intro}</p>
           <div className="contact-cards">
