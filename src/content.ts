@@ -302,7 +302,7 @@ const en: Content = {
   },
   contact: {
     kicker: "Talk directly to our consultants",
-    titleLines: ["Take your step toward the future", "today"],
+    titleLines: ["Take your step toward", "the future today"],
     intro: "Our real estate consultants are ready to answer all your questions.",
     cards: {
       address: {
