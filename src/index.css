@@ -437,8 +437,23 @@ html[dir="ltr"] .hero-card-foot img { transform: scaleX(-1); }
   html[dir="ltr"] .hero-copy > p, html[dir="ltr"] .hero-copy > ul { font-size: 14px; line-height: 21px; }
   html[dir="ltr"] .hero-card { width: min(100%, 520px); }
 }
+@media (max-width: 820px) {
+  .vision-image:has(.vision-art-dim) { aspect-ratio: auto; min-height: 0; }
+  .vision-art-dim { display: none; }
+  .vision-image .vision-text { position: relative; inset: auto; padding: 24px 20px; }
+  .vision-image .vision-text h3 { font-size: 22px; }
+  .vision-image .vision-text p { font-size: 14px; line-height: 1.7; }
+  html[dir="ltr"] .stats-row { flex-wrap: wrap; }
+  html[dir="ltr"] .stats-row .stats div { padding: 8px 14px; white-space: normal; }
+  html[dir="ltr"] .stats-row .stats span { font-size: 11px; }
+  html[dir="ltr"] .brand { margin-right: 0; margin-left: 0; }
+  html[dir="ltr"] .menu-toggle { margin: 0; }
+  html[dir="ltr"] .lang-switch-mobile { margin-left: auto; margin-right: 8px; margin-inline-start: auto; min-height: 40px; padding: 0 12px; }
+}
 .vision-art-dim { visibility: hidden; }
 .vision-image:has(.vision-art-dim) { background: linear-gradient(135deg, #0a1b4d 0%, #0d2562 55%, #14337f 100%); }
+html[dir="ltr"] .stats-row .stats { display: flex; width: max-content; max-width: 100%; flex: 0 0 auto; }
+html[dir="ltr"] .stats-row .stats div { width: max-content; max-width: 100%; box-sizing: border-box; }
 html[dir="ltr"] .stats-row .stats div { padding: 10px 18px; text-align: center; white-space: nowrap; }
 html[dir="ltr"] .stats-row .stats span { text-align: center; }
 html[dir="ltr"] .stats-row { flex-wrap: wrap; gap: 14px 16px; align-items: stretch; }
