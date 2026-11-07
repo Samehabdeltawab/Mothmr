@@ -425,3 +425,12 @@ a[href^="tel:"], a[href^="tel:"] strong { direction: ltr; unicode-bidi: isolate;
   .form-row { grid-template-columns: minmax(0, 1fr); }
   .social-row { flex-wrap: wrap; }
 }
+
+/* ---- Performance overrides ---- */
+/* backdrop-filter is expensive over large images; the translucent backgrounds already give the same look */
+.eyebrow.dark, .btn-glass, .stats div, .project-badge, .project-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
+.hero-card { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+/* heavy blurred duplicate image in the gallery */
+.project-detail .project-image > img.gallery-bg { display: none; }
+/* skip rendering of off-screen sections */
+section.vision, section.values-section { content-visibility: auto; contain-intrinsic-size: auto 600px; }

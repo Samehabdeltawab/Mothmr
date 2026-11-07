@@ -115,7 +115,7 @@ function Header() {
     <header className="header" dir="rtl">
       <div className="shell nav-row">
         <a className="header-logo" href="#home" aria-label="مُثمر للتطوير العقاري">
-          <img src={`${B}/logo.png`} alt="Mothmr Developments" />
+          <img src={`${B}/logo.webp`} alt="Mothmr Developments" decoding="async" />
         </a>
         <nav aria-label="التنقل الرئيسي">
           <a className="active" href="#home">
@@ -162,7 +162,7 @@ function Hero() {
   return (
     <section id="home" className="hero" dir="rtl">
       <div className="hero-bg" aria-hidden="true">
-        <img src={`${B}${encodeURI("/project-333/future.png")}`} alt="" />
+        <img src={`${B}${encodeURI("/project-333/future.webp")}`} alt="" fetchPriority="high" decoding="async" />
       </div>
       <div className="shell hero-grid">
         <div className="hero-copy">
@@ -240,11 +240,11 @@ function Hero() {
 function Vision() {
   const cards = [
     {
-      image: "8cb45.png",
+      image: "8cb45.webp",
       label: "OUR VISION",
     },
     {
-      image: "6570e.png",
+      image: "6570e.webp",
       label: "OUR MISSION",
     },
   ]
@@ -262,7 +262,7 @@ function Vision() {
           {cards.map((card) => (
             <article className="vision-card" key={card.label}>
               <div className="vision-image">
-                <img src={`${A}/${card.image}`} alt="" />
+                <img src={`${A}/${card.image}`} alt="" loading="lazy" decoding="async" />
               </div>
             </article>
           ))}
@@ -272,7 +272,7 @@ function Vision() {
   )
 }
 
-const galleryImages = ["1.png", "2.png"].map((n) =>
+const galleryImages = ["1.webp", "2.webp"].map((n) =>
   `${B}${encodeURI(`/project-333/${n}`)}`,
 )
 
@@ -296,7 +296,7 @@ function Gallery({ images }: { images: string[] }) {
   return (
     <>
       <img className="gallery-bg" src={images[i]} alt="" aria-hidden="true" />
-      <img className="gallery-main" src={images[i]} alt={`صورة ${i + 1} من ${images.length}`} />
+      <img className="gallery-main" src={images[i]} alt={`صورة ${i + 1} من ${images.length}`} decoding="async" />
       <button type="button" aria-label="السابق" style={{ ...arrow, right: 12 }} onClick={() => go(-1)}>
         ›
       </button>
@@ -429,7 +429,7 @@ function Project() {
           style={{ display: "block", cursor: "pointer", width: "100%", padding: 0, textAlign: "inherit" }}
         >
           <div className="project-image">
-            <img src={`${B}/shared.png`} alt="مشروع مسلسل 2 قطعة 333" />
+            <img src={`${B}/shared.webp`} alt="مشروع مسلسل 2 قطعة 333" loading="lazy" decoding="async" />
           </div>
         </button>
         </div>
@@ -446,8 +446,10 @@ function Project() {
         <div className="project-card">
           <div className="project-image">
             <img
-              src={`${B}${encodeURI("/project-333/inprogress.jpeg")}`}
+              src={`${B}${encodeURI("/project-333/inprogress.webp")}`}
               alt="مشروع تحت التنفيذ"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -703,7 +705,7 @@ function Footer() {
     <footer className="footer" dir="rtl">
       <div className="shell footer-row">
         <a className="footer-logo" href="#home" aria-label="مُثمر للتطوير العقاري">
-          <img src={`${B}/logo.png`} alt="Mothmr Developments" />
+          <img src={`${B}/logo.webp`} alt="Mothmr Developments" loading="lazy" decoding="async" />
         </a>
         <div className="footer-bottom">
           <span>
@@ -729,7 +731,7 @@ function Values() {
         <div className="values-grid" dir="ltr">
           {valuesImages.map((n) => (
             <div key={n} className="value-card">
-              <img src={`${B}/Values/${n}.png`} alt={`قيمة ${n}`} loading="lazy" />
+              <img src={`${B}/Values/${n}.webp`} alt={`قيمة ${n}`} loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
