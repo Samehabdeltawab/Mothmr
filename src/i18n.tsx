@@ -9,8 +9,6 @@ import {
 } from "react"
 import { content, type Content, type Lang } from "./content"
 
-const STORAGE_KEY = "lang"
-
 type I18n = {
   lang: Lang
   dir: "rtl" | "ltr"
@@ -20,12 +18,12 @@ type I18n = {
 
 const I18nContext = createContext<I18n | null>(null)
 
-// Priority: ?lang=en|ar in the URL -> saved choice -> Arabic (default)
+// Priority: ?lang=en|ar in the URL -> Arabic (default, saved choice is ignored)
 function readInitialLang(): Lang {
   try {
     const q = new URLSearchParams(window.location.search).get("lang")
     if (q === "en" || q === "ar") return q
-    return localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "ar"
+    return "ar"
   } catch {
     return "ar"
   }
@@ -56,11 +54,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute("content", t.meta.description)
-    try {
-      localStorage.setItem(STORAGE_KEY, lang)
-    } catch {
-      /* ignore */
-    }
   }, [lang, dir, t])
 
   const toggle = useCallback(() => {
