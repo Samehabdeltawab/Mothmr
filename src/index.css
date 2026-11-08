@@ -482,3 +482,12 @@ html[dir="ltr"] .checks li::before { margin-left: 0; margin-right: 8px; }
 .project-detail .project-image > img.gallery-bg { display: none; }
 /* skip rendering of off-screen sections */
 section.vision, section.values-section { content-visibility: auto; contain-intrinsic-size: auto 600px; }
+
+/* Caption under each completed-project card */
+.project-caption { padding: 14px 18px; color: var(--navy); background: #fff; font: 800 18px/26px 'Tajawal:ExtraBold'; text-align: center; border-top: 1px solid #e2e8f0; }
+
+.completed-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px; max-width: 1000px; margin-inline: auto; }
+.completed-list .project-card { grid-template-columns: 1fr; }
+.completed-list .project-image { height: auto; aspect-ratio: 4 / 3; min-height: 0; }
+.completed-list .project-image > img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 560px) { .completed-list { grid-template-columns: 1fr; gap: 24px; } }

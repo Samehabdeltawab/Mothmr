@@ -309,6 +309,25 @@ const galleryImages = ["1.webp", "2.webp"].map((n) =>
   `${B}${encodeURI(`/project-333/${n}`)}`,
 )
 
+const completedProjects = [
+  {
+    number: "333",
+    cover: `${B}${encodeURI("/project-333/Logo 333.png")}`,
+    gallery: galleryImages,
+    pdf: `${B}${encodeURI("/project-333/333.pdf")}`,
+    areaMin: 150,
+    areaMax: undefined as number | undefined,
+  },
+  {
+    number: "219",
+    cover: `${B}${encodeURI("/project 219/project logo.png")}`,
+    gallery: [`${B}${encodeURI("/project 219/project logo.png")}`],
+    pdf: `${B}${encodeURI("/project 219/219.pdf")}`,
+    areaMin: 175,
+    areaMax: 192 as number | undefined,
+  },
+]
+
 function Gallery({ images }: { images: string[] }) {
   const { t } = useI18n()
   const [i, setI] = useState(0)
@@ -331,23 +350,27 @@ function Gallery({ images }: { images: string[] }) {
     <>
       <img className="gallery-bg" src={images[i]} alt="" aria-hidden="true" />
       <img className="gallery-main" src={images[i]} alt={t.gallery.imageOf(i + 1, images.length)} decoding="async" />
-      <button type="button" aria-label={t.gallery.prev} style={{ ...arrow, right: 12 }} onClick={() => go(-1)}>
-        ›
-      </button>
-      <button type="button" aria-label={t.gallery.next} style={{ ...arrow, left: 12 }} onClick={() => go(1)}>
-        ‹
-      </button>
-      <div style={{ position: "absolute", bottom: 12, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 8, zIndex: 2 }}>
-        {images.map((_, k) => (
-          <button
-            key={k}
-            type="button"
-            aria-label={t.gallery.photo(k + 1)}
-            onClick={() => setI(k)}
-            style={{ width: 10, height: 10, borderRadius: "50%", border: 0, padding: 0, cursor: "pointer", background: k === i ? "#c9a227" : "rgba(255,255,255,.8)" }}
-          />
-        ))}
-      </div>
+      {images.length > 1 && (
+        <>
+          <button type="button" aria-label={t.gallery.prev} style={{ ...arrow, right: 12 }} onClick={() => go(-1)}>
+            ›
+          </button>
+          <button type="button" aria-label={t.gallery.next} style={{ ...arrow, left: 12 }} onClick={() => go(1)}>
+            ‹
+          </button>
+          <div style={{ position: "absolute", bottom: 12, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 8, zIndex: 2 }}>
+            {images.map((_, k) => (
+              <button
+                key={k}
+                type="button"
+                aria-label={t.gallery.photo(k + 1)}
+                onClick={() => setI(k)}
+                style={{ width: 10, height: 10, borderRadius: "50%", border: 0, padding: 0, cursor: "pointer", background: k === i ? "#c9a227" : "rgba(255,255,255,.8)" }}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </>
   )
 }
@@ -355,16 +378,18 @@ function Gallery({ images }: { images: string[] }) {
 function Project() {
   const { t, dir } = useI18n()
   const p = t.project
-  const [details, setDetails] = useState(false)
+  const [details, setDetails] = useState<number | null>(null)
+  const [list, setList] = useState(false)
 
-  if (details) {
+  if (details !== null) {
+    const proj = completedProjects[details]
     return (
       <section id="projects" className="section project-section" dir={dir}>
         <div className="shell">
           <button
             className="btn btn-soft"
             style={{ marginBottom: 24 }}
-            onClick={() => setDetails(false)}
+            onClick={() => setDetails(null)}
           >
             {p.back}
           </button>
@@ -375,24 +400,24 @@ function Project() {
                 {p.completedLabel}
               </span>
               <h2>
-                {p.detailTitle} <em>{p.detailTitleEm}</em>
+                {p.detailTitle(proj.number)} <em>{p.detailTitleEm}</em>
               </h2>
             </div>
             <p>{p.detailIntro}</p>
           </div>
           <div className="project-card project-detail">
             <div className="project-image">
-              <Gallery images={galleryImages} />
+              <Gallery key={proj.number} images={proj.gallery} />
               <span className="project-badge">
                 {p.badge} <img src={`${A}/7b359.svg`} alt="" />
               </span>
             </div>
             <div className="project-content">
               <span className="project-kicker">{p.kicker}</span>
-              <h3>{p.heading}</h3>
+              <h3>{p.heading(proj.number)}</h3>
               <p>{p.description}</p>
               <div className="facts">
-                {p.facts.map(({ label, value }, i) => (
+                {p.facts(proj.areaMin, proj.areaMax).map(({ label, value }, i) => (
                   <div key={label}>
                     <span>
                       {label}
@@ -410,8 +435,8 @@ function Project() {
               <div className="project-actions">
                 <a
                   className="btn btn-primary"
-                  href={`${B}${encodeURI("/project-333/333.pdf")}`}
-                  download="333.pdf"
+                  href={proj.pdf}
+                  download={`${proj.number}.pdf`}
                   target="_blank"
                   rel="noopener"
                 >
@@ -424,6 +449,51 @@ function Project() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (list) {
+    return (
+      <section id="projects" className="section project-section" dir={dir}>
+        <div className="shell">
+          <button
+            className="btn btn-soft"
+            style={{ marginBottom: 24 }}
+            onClick={() => setList(false)}
+          >
+            {p.back}
+          </button>
+          <div className="project-head">
+            <div>
+              <span className="project-label">
+                <img src={`${A}/443ab.svg`} alt="" />
+                {p.completedLabel}
+              </span>
+              <h2>{p.deliveredTitle}</h2>
+            </div>
+          </div>
+          <div className="completed-list">
+            {completedProjects.map((proj, idx) => (
+              <button
+                key={proj.number}
+                type="button"
+                className="project-card"
+                onClick={() => {
+                  setDetails(idx)
+                  document.getElementById("projects")?.scrollIntoView()
+                }}
+                aria-label={p.openAria(proj.number)}
+                style={{ display: "block", cursor: "pointer", width: "100%", padding: 0, textAlign: "inherit" }}
+              >
+                <div className="project-image">
+                  <img src={proj.cover} alt={p.coverAlt(proj.number)} loading="lazy" decoding="async" />
+                </div>
+                <div className="project-caption">{p.detailTitle(proj.number)}</div>
+              </button>
+            ))}
           </div>
         </div>
       </section>
@@ -447,14 +517,14 @@ function Project() {
           type="button"
           className="project-card"
           onClick={() => {
-            setDetails(true)
+            setList(true)
             document.getElementById("projects")?.scrollIntoView()
           }}
-          aria-label={p.openAria}
+          aria-label={p.deliveredTitle}
           style={{ display: "block", cursor: "pointer", width: "100%", padding: 0, textAlign: "inherit" }}
         >
           <div className="project-image">
-            <img src={`${B}/shared.webp`} alt={p.coverAlt} loading="lazy" decoding="async" />
+            <img src={`${B}/shared.webp`} alt={p.deliveredTitle} loading="lazy" decoding="async" />
           </div>
         </button>
         </div>

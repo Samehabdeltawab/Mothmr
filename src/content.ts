@@ -75,23 +75,26 @@ const ar = {
   project: {
     completedLabel: "مشاريع منفّذة",
     deliveredTitle: "أعمال تم تسليمها",
-    openAria: "تفاصيل مشروع مسلسل 2 قطعة 333",
-    coverAlt: "مشروع مسلسل 2 قطعة 333",
+    openAria: (n: string) => `تفاصيل مشروع مسلسل 2 قطعة ${n}`,
+    coverAlt: (n: string) => `مشروع مسلسل 2 قطعة ${n}`,
     inProgressLabel: "مشاريع تحت التنفيذ",
     inProgressTitle: "أعمال تحت الإنشاء",
     inProgressAlt: "مشروع تحت التنفيذ",
     back: "→ رجوع للمشاريع",
-    detailTitle: "مسلسل 2 - قطعة 333",
+    detailTitle: (n: string) => `مسلسل 2 - قطعة ${n}`,
     detailTitleEm: "| تحفة سكنية فريدة",
     detailIntro:
       "صُمم خصيصاً للباحثين عن الرقي والخصوصية والواجهات الكلاسيكية الفخمة في أرقى المواقع الاستراتيجية.",
     badge: "مشروع متميز",
     kicker: "نمط نيوكلاسيكي فاخر · تصميم معماري متزن",
-    heading: "بوابة المستقبل السكنية (333)",
+    heading: (n: string) => `بوابة المستقبل السكنية (${n})`,
     description:
       "مبنى سكني فندقي فاخر يتكون من دور أرضي وثلاثة أدوار متكررة (G+3) بواجهة حجرية فاخرة ومداخل فندقية من أرقى أنواع الرخام، مع نظام أمني سمارت وإنتركم مرئي ومصاعد إيطالية مستوردة.",
-    facts: [
-      { label: "المساحات", value: "تبدأ من 150 م²" },
+    facts: (min: number, max?: number) => [
+      {
+        label: "المساحات",
+        value: max ? `من ${min} م² إلى ${max} م²` : `تبدأ من ${min} م²`,
+      },
       { label: "الارتفاع المعماري", value: "أرضي + 3 أدوار (G+3)" },
       { label: "تاريخ التسليم", value: "ديسمبر 2025" },
       { label: "مستوى التشطيب", value: "طوب أحمر / نصف تشطيب / ألترا سوبر لوكس" },
@@ -265,23 +268,26 @@ const en: Content = {
   project: {
     completedLabel: "Completed projects",
     deliveredTitle: "Delivered works",
-    openAria: "Project details: Series 2, Plot 333",
-    coverAlt: "Series 2 - Plot 333 project",
+    openAria: (n: string) => `Project details: Series 2, Plot ${n}`,
+    coverAlt: (n: string) => `Series 2 - Plot ${n} project`,
     inProgressLabel: "Projects under construction",
     inProgressTitle: "Works in progress",
     inProgressAlt: "Project under construction",
     back: "← Back to projects",
-    detailTitle: "Series 2 - Plot 333",
+    detailTitle: (n: string) => `Series 2 - Plot ${n}`,
     detailTitleEm: "| A Unique Residential Masterpiece",
     detailIntro:
       "Designed for those who seek elegance, privacy and luxurious classic façades in the most prestigious strategic locations.",
     badge: "Featured project",
     kicker: "Luxury neoclassical style · Balanced architectural design",
-    heading: "The Residential Gateway to the Future (333)",
+    heading: (n: string) => `The Residential Gateway to the Future (${n})`,
     description:
       "A luxury hotel-style residential building of a ground floor and three typical floors (G+3), with a premium stone façade and hotel-grade entrances in the finest marble, plus a smart security system, video intercom and imported Italian elevators.",
-    facts: [
-      { label: "Areas", value: "Starting from 150 m²" },
+    facts: (min: number, max?: number) => [
+      {
+        label: "Areas",
+        value: max ? `${min} m² to ${max} m²` : `Starting from ${min} m²`,
+      },
       { label: "Building height", value: "Ground + 3 floors (G+3)" },
       { label: "Delivery date", value: "December 2025" },
       { label: "Finishing level", value: "Red brick / Semi-finished / Ultra super lux" },
